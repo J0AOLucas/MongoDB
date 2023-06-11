@@ -21,6 +21,7 @@ def produtos():
     
     return render_template("produtos.html", documentos=documentos)
 
+
 @app.route("/adicionar.html")
 def adicionar():
     return render_template("adicionar.html")

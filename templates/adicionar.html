@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Monte Carlos Acessórios</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   </head>
   <body>
@@ -34,18 +34,18 @@
 
     <!-- main text -->
     <div class="container">
-        <h1 class="text-center p-2 mb-4 mt-4">Monte Carlo loja de acessorios</h1>
+        <h1 class="text-center p-2 mb-4 mt-4">Monte Carlo Acessórios</h1>
         <p class="text-center bg-info-subtle p-3 mb-2 ">Tem um novo produto para adicionar? Preencha o formulário abaixo e clique em concluir :D</p>
 
         <form class="mt-5">
           <div class="row">
             <div class="col">
               <label for="nome" class="form-label">Nome do produto</label>
-              <input type="nome" class="form-control" id="Inputnome1" aria-describedby="nomeHelp">
+              <input type="text" name="nome" id="nome" class="form-control" id="Inputnome1" aria-describedby="nomeHelp">
             </div>
             <div class="col">
               <label for="Marca" class="form-label">Marca do produto</label>
-              <input type="Marca" class="form-control" id="InputMarca1" aria-describedby="MarcaHelp">
+              <input type="text" name="marca" id="marca" class="form-control" id="InputMarca1" aria-describedby="MarcaHelp">
             </div>
           </div>
 
@@ -53,28 +53,37 @@
             <label for="InputPreço1" class="form-label">Preço</label>
             <div class="input-group mb-3">
               <span class="input-group-text">R$</span>
-              <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+              <input type="text" name="preco" id="preco" class="form-control" aria-label="Amount (to the nearest dollar)">
             </div>
           </div>
           
           <div class="mb-3">
             <label for="InputCategoria1" class="form-label">Categoria</label>
-            <select class="form-select" aria-label="Default select ">
+            <select type="text"  name="categoria" id="categoria" class="form-select" aria-label="Default select ">
               <option selected>Selecionar</option>
-              <option value="1">Fitness</option>
-              <option value="2">Lifestyle</option>
-              <option value="3">Outro</option>
+              <option value="Fitness">Fitness</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Gaming">Gaming</option>
+              <option value="Industrial">Industrial</option>
+              <option value="Lifestyle">Lifestyle</option>
+              <option value="Medical">Medical</option>
+              <option value="Pets and Animals">Pets and Animals</option>
             </select>
           </div>
 
           <div class="mb-3">
             <label for="InputCorpo1" class="form-label">Localização no corpo</label>
-            <select class="form-select" aria-label="Default select ">
+            <select type="text" name="localizacao" id="localizacao" class="form-select" aria-label="Default select ">
               <option selected>Selecionar</option>
-              <option value="1">Pulso</option>
-              <option value="2">Pescoço</option>
-              <option value="3">Rosto</option>
-              <option value="3">Outro</option>
+              <option value="Arms">Arms</option>
+              <option value="Feet">Feet</option>
+              <option value="Head">Head</option>
+              <option value="Torso">Torso</option>
+              <option value="Wrist">Wrist</option>
+              <option value="Chest">Chest</option>
+              <option value="Hands">Hands</option>
+              <option value="Neck">Neck</option>
+              <option value="Waist">Waist</option>
             </select>
           </div>
 
@@ -82,11 +91,11 @@
             <label for="InputCorpo1" class="form-label">Imagem do produto</label>
             <div class="input-group mb-3">
               <input type="file" class="form-control" id="inputGroupFile02">
-              <label class="input-group-text" for="inputGroupFile02">Upload</label>
+              <label type="text" name="imagem" id="imagem" class="input-group-text" for="inputGroupFile02">Upload</label>
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text">Observações</span>
-              <textarea class="form-control" aria-label="With textarea"></textarea>
+              <textarea type="text"  name="obs" id="obs" class="form-control" aria-label="With textarea"></textarea>
             </div>
           </div>
 

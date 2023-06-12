@@ -47,11 +47,11 @@ def adicionar():
             "Imagem" : Imagem,
             "Observations" : Observations
         }
-        
-        db.products.insert_one(new_acessory)
+
+        collection.insert_one(new_acessory)
         logging.info(f"Produto inserido com sucesso: {new_acessory}")
         
-        return redirect("/")
+        return redirect(url_for("home"))
 
 
 @app.route("/produto.html/<id>", methods=['GET'])

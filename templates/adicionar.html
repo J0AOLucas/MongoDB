@@ -37,15 +37,15 @@
         <h1 class="text-center p-2 mb-4 mt-4">Monte Carlo Acessórios</h1>
         <p class="text-center bg-info-subtle p-3 mb-2 ">Tem um novo produto para adicionar? Preencha o formulário abaixo e clique em concluir :D</p>
 
-        <form class="mt-5">
+        <form class="mt-5" method="post">
           <div class="row">
             <div class="col">
               <label for="nome" class="form-label">Nome do produto</label>
-              <input type="text" name="nome" id="nome" class="form-control" id="Inputnome1" aria-describedby="nomeHelp">
+              <input type="text" name="nome" id="nome" class="form-control" aria-describedby="nomeHelp">
             </div>
             <div class="col">
               <label for="Marca" class="form-label">Marca do produto</label>
-              <input type="text" name="marca" id="marca" class="form-control" id="InputMarca1" aria-describedby="MarcaHelp">
+              <input type="text" name="marca" id="marca" class="form-control" aria-describedby="MarcaHelp">
             </div>
           </div>
 
@@ -53,7 +53,7 @@
             <label for="InputPreço1" class="form-label">Preço</label>
             <div class="input-group mb-3">
               <span class="input-group-text">R$</span>
-              <input type="text" name="preco" id="preco" class="form-control" aria-label="Amount (to the nearest dollar)">
+              <input type="text" name="preco" id="preco" class="form-control" placeholder="ex: 100" aria-label="Amount (to the nearest dollar)">
             </div>
           </div>
           
@@ -88,12 +88,10 @@
           </div>
 
           <div class="mb-3">
-            <label for="InputCorpo1" class="form-label">Imagem do produto</label>
-            <div class="input-group mb-3">
-              <input type="file" class="form-control" id="inputGroupFile02">
-              <label type="text" name="imagem" id="imagem" class="input-group-text" for="inputGroupFile02">Upload</label>
-            </div>
-            <div class="input-group mb-3">
+            <label for="imagem" class="form-label">Link da imagem do produto</label>
+            <input type="text" name="imagem" id="imagem" class="form-control"  aria-describedby="imagemHelp">
+          <div class="mb-3"></div>
+          <div class="input-group mb-3">
               <span class="input-group-text">Observações</span>
               <textarea type="text"  name="obs" id="obs" class="form-control" aria-label="With textarea"></textarea>
             </div>

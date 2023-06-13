@@ -81,9 +81,10 @@
                       <div class="card" style="width: 9rem; display: inline-block;">
                           <img src="{{ documento.Image }}" class="card-img-top" alt="...">
                           <div class="card-body">
-                              <p class="card-text">{{ documento.Name }}</p>
-                              <p>Preço: {{ documento.Price }}</p>
-                          </div>
+                              <p class="card-text" >{{ documento.Name }}</p>
+                              <p class="text-body" style="font-weight: normal">Preço: {{ documento.Price }}</p>
+                              <a href="{{ url_for('produto_details', id = documento._id) }}" class="btn btn-outline-primary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">More details</a>
+                            </div>
                       </div>
                       {% endfor %}
                   </div>
@@ -96,13 +97,13 @@
           </table>
         </div>
         <div class="align-content-end">
-          <a href="./produtos.html"><button class="btn btn-secondary">Visualizar todos</button></a>
-          <a href="./adicionar.html"><button class="btn btn-danger">Adicionar novo produto</button></a>
+          <a href="{{ url_for('produtos') }}" ><button class="btn btn-secondary">Visualizar todos</button></a>
+          <a href="{{ url_for('adicionar') }}"><button class="btn btn-danger">Adicionar novo produto</button></a>
         </div>
 
         <!-- about us -->
         <h2 id=contato class="text-center p-5 mt-5">About us</h2>
-        <p class="text-center mb-5"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, illum. 
+        <p class="text-center mb-5 p-2"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, illum. 
             Laborum amet aliquid iure dolores quam quaerat hic veritatis quos. Iure ratione 
             at mollitia sequi beatae aspernatur, adipisci id, repellendus reprehenderit inventore omnis 
             consequatur consectetur sint possimus obcaecati vero error praesentium odio cupiditate recusandae 

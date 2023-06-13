@@ -17,16 +17,16 @@ def home():
     return render_template("home.html", documentos=documentos)
 
 
-@app.route("/produtos.html", methods=['GET'])
+@app.route("/produtos", methods=['GET'])
 def produtos():
     documentos = collection.find().limit(80)
     return render_template("produtos.html", documentos=documentos)
 
 
-@app.route("/adicionar.html", methods=['GET', 'POST'])
+@app.route("/add", methods=['GET', 'POST'])
 def adicionar():
     if request.method == "GET":
-        return render_template("adicionar.html")
+        return render_template("add.html")
     else: 
         Name = request.form['nome']
         Company = request.form['marca']
@@ -52,12 +52,25 @@ def adicionar():
         logging.info(f"Produto inserido com sucesso: {new_acessory}")
         
         return redirect(url_for("home"))
-
-
-@app.route("/produto.html/<id>", methods=['GET'])
-def produto(id):
+    
+'''
+@app.route("/edit/<id>", methods=['POST'])
+def edit(id):
+'''
+        
+    
+@app.route("/details/<id>", methods=['GET'])
+def produto_details(id):
     documentos = collection.find_one({'_id': ObjectId(id)})
-    return render_template("produto.html", documentos=documentos)
+    return render_template("details.html", documentos=documentos)
+
+
+@app.route("/deletar/<id>", methods=["POST"])
+def delete(id):
+    collection.delete_one({'_id': ObjectId(id)})
+    return redirect(url_for('home'))
+
+
 
 
 

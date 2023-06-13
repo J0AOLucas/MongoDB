@@ -28,24 +28,16 @@ def adicionar():
     if request.method == "GET":
         return render_template("add.html")
     else: 
-        Name = request.form['nome']
-        Company = request.form['marca']
-        Category = request.form['categoria']
-        Price = request.form['preco']
-        Localizacao = request.form['localizacao']
-        Imagem = request.form['imagem']
-        Observations = request.form['obs']
-    
         new_acessory ={
-            "Name" : Name,
+            "Name" : request.form['nome'],
             "Company" : {
-                "Name" : Company} ,
-            "Category" : Category,
-            "Price" : Price,
+                "Name" : request.form['marca']} ,
+            "Category" : request.form['categoria'],
+            "Price" : request.form['preco'],
             "Body" : {
-                "Location" : Localizacao} ,
-            "Imagem" : Imagem,
-            "Observations" : Observations
+                "Location" : request.form['localizacao']} ,
+            "Imagem" : request.form['imagem'],
+            "Observations" : request.form['obs']
         }
 
         collection.insert_one(new_acessory)
@@ -54,25 +46,29 @@ def adicionar():
         return redirect(url_for("home"))
     
 
-@app.route("/edit/<id>", methods=['GET', 'POST']) 
+@app.route("/edit/<id>", methods=[ 'GET', 'POST']) 
 def edit(id): 
-    if request.method == 'GET': 
-        product = collection.find_one({'_id': ObjectId(id)}) 
-        return render_template('edit.html', product=product) 
-    else: updated_product = { 
-                             "Name": request.form['nome'], 
-                             "Company": { "Name": request.form['marca'] },
-                             "Category": request.form['categoria'],
-                             "Price": request.form['preco'],
-                             "Body": { "Location": request.form['localizacao'] },
-                             "Imagem": request.form['imagem'],
-                             "Observations": request.form['obs'] } 
-    collection.update_one({'_id': ObjectId(id)}, {'$set': updated_product}) 
+    if request.method=='GET':
+        documentos = collection.find_one({"_id" : ObjectId(id)})
+        return render_template("edit.html", documentos=documentos)
     
-    logging.info(f"Produto atualizado com sucesso: {updated_product}")
+    else :
+        updated_document = {
+            "Name" : request.form['nome'],
+            "Company" : {
+                "Name" : request.form['marca']} ,
+            "Category" : request.form['categoria'],
+            "Price" : request.form['preco'],
+            "Body" : {
+                "Location" : request.form['loc']} ,
+            "Imagem" : request.form['img'],
+            "Observations" : request.form['obs']
+        }
+        collection.update_one({"_id" : ObjectId(id)}, {"$set" : updated_document })
+        
+        return redirect(url_for("produto_details", id = id))
 
-    return redirect(url_for('produto_details', id=id))       
-    
+
 @app.route("/details/<id>", methods=['GET'])
 def produto_details(id):
     documentos = collection.find_one({'_id': ObjectId(id)})
@@ -92,4 +88,5 @@ def delete(id):
 
 if __name__ == "__main__":
     app.run(debug=True)
+    
     

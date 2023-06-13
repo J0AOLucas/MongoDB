@@ -35,40 +35,42 @@
     <!-- main text -->
     <div class="container">
         <h1 class="text-center p-2 mb-4 mt-4">Monte Carlo Acessórios</h1>
-        <h3 class="text-center mb-2 mt-2">Atualizar item</h3>
-        <p class="text-center bg-info-subtle p-3 mb-2 ">Deseja atualizar as informações desse produto? Atualize o formulário abaixo e clique em concluir :D</p>
+        <h3 class="text-center mb-4 mt-4">Atualizar item</h3>
+        <p class="text-center bg-info-subtle p-3 mb-2 ">Deseja atualizar as informações desse produto? </br> Atualize o formulário abaixo e clique em concluir :D</p>
 
-        <form class="mt-5" method="post" action="{{ url_for('edit', id=product._id) }}">
-          <div class="form-group">
+        <form method="POST" action="{{ url_for('edit', id=documentos._id) }}">
+
+          <div class="form-group mt-5 mb-3">
             <label for="nome">Nome do produto</label>
-            <input type="text" class="form-control" name="name" value="{{ product.Name }}" required>
+            <input type="text" class="form-control" name="nome" value="{{ documentos.Name}}" required>
           </div>
-          <div class="form-group">
+          <div class="form-group mb-3">
             <label for="marca">Marca do produto</label>
-            <input type="text" class="form-control" name="marca" value="{{ product.Company.Name }}" required>
+            <input type="text" class="form-control" name="marca" value="{{ documentos.Company.Name }}" required>
           </div>
-          <div class="form-group">
+          <div class="form-group mb-3">
             <label for="categoria">Categoria</label>
-            <input type="text" class="form-control" name="categoria" value="{{ product.Category }}" required>
+            <input type="text" class="form-control" name="categoria" value="{{ documentos.Category }}" required>
           </div>
-          <div class="form-group">
+          <div class="form-group mb-3">
             <label for="preco">Preço</label>
-            <input type="text" class="form-control" name="preco" value="{{ product.Price }}" required>
+            <input type="text" class="form-control" name="preco" value="{{ documentos.Price }}" required>
           </div>
-          <div class="form-group">
-            <label for="localizacao">Localização no corpo</label>
-            <input type="text" class="form-control" name="localizacao" value="{{ product.Body.Location }}" required>
+          <div class="form-group mb-3">
+            <label for="loc">Localização no corpo</label>
+            <input type="text" class="form-control" name="loc" value="{{ documentos.Body.Location }}" required>
           </div>
-          <div class="form-group">
-            <label for="imagem">Imagem URL</label>
-            <input type="text" class="form-control" name="imagem" value="{{ product.Imagem }}" required>
+          <div class="form-group mb-3">
+            <label for="img">Imagem URL</label>
+            <input type="text" class="form-control" name="img" value="{{ documentos.Imagem }}" >
           </div>
-          <div class="form-group">
+          <div class="form-group mb-3">
             <label for="obs">Observações</label>
-            <textarea class="form-control" name="obs" rows="3" required>{{ product.Observations }}</textarea>
+            <textarea class="form-control" name="obs" rows="3" >{{ documentos.Observations }}</textarea>
           </div>
           <button type="submit" class="btn btn-primary">Atualizar Produto</button>
-        </form>
+
+      </form>
 
 
     </div>

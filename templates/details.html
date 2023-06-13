@@ -43,27 +43,27 @@
     <ul>
         <div class="card mb-3" style="max-width: 1000px;">
           <div class="row g-0">
+            
             <div class="col-md-4">
               <img src= "{{ documentos.Imagem }}" width=500px class="img-fluid rounded-start" alt="...">
             </div>
+
             <div class="col-md-8">
+
               <div class="card-body">
                 <h5 class="card-title">{{ documentos.Name }}</h5>
                 <p class="card-text"> <strong>Preço: {{ documentos.Price }}</strong></p>
                 <p class="card-text"><small class="text-body-secondary">Marca: {{ documentos.Company.Name }}</small></p>
                 <p class="card-text"><small class="text-body-secondary">Lugar do corpo: {{ documentos.Body.Location }}</small></p> 
               </div>
-              
-              
+
               <div class="btn-group">
                 <form action="{{ url_for('delete', id=documentos._id) }}" method="POST">
                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirmDeletar();">Deletar</button>
                 </form>
-
-                <!--- Not working yet --> 
-                <form action="{{ url_for('edit', id=documentos._id) }}" method="POST">
+                <form action="{{ url_for('edit', id=documentos._id) }}">
                   <button type="submit" class="btn btn-secondary btn-sm">Atualizar produto</button>
-              </form>
+                </form>
               </div>
 
             </div>
@@ -75,10 +75,12 @@
     <footer>
 
     <!-- the end-->
-    <footer id=contato  class="bg-dark mt-5 p-5 text-white text-center">
-      <p>Acessórios de qualidade</p>
-      <p><a href="ana : ana@gmail.com" class="text-white">Entre em contato</a></p>
-  </footer>
+    <footer id=contato  class="rodape">
+      <div class="bg-dark mt-5 p-5 text-white text-center">
+        <p>Acessórios de qualidade</p>
+        <p><a href="ana : ana@gmail.com" class="text-white">Entre em contato</a></p>
+      </div>
+  
 
     </footer>
   </body>

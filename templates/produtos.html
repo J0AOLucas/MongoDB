@@ -106,9 +106,9 @@
               </div>
               <div class="card-footer" style="padding: 5px;">
                 <form class="d-block">
-                  <button class="btn btn-danger btn-sm" style="font-size: 10px;">
-                    Adicionar ao Carrinho
-                  </button>
+                  <a class="btn btn-danger btn-sm" href="{{ url_for('produto_details', id = documento._id) }}" style="font-size: 10px;">
+                    Ver detalhes
+                  </a>
                   <small class="text-success" style="font-size: 10px;">{{ documento.Category }}</small>
                 </form>
               </div>

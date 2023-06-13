@@ -53,21 +53,37 @@ def adicionar():
         
         return redirect(url_for("home"))
     
-'''
-@app.route("/edit/<id>", methods=['POST'])
-def edit(id):
-'''
-        
+
+@app.route("/edit/<id>", methods=['GET', 'POST']) 
+def edit(id): 
+    if request.method == 'GET': 
+        product = collection.find_one({'_id': ObjectId(id)}) 
+        return render_template('edit.html', product=product) 
+    else: updated_product = { 
+                             "Name": request.form['nome'], 
+                             "Company": { "Name": request.form['marca'] },
+                             "Category": request.form['categoria'],
+                             "Price": request.form['preco'],
+                             "Body": { "Location": request.form['localizacao'] },
+                             "Imagem": request.form['imagem'],
+                             "Observations": request.form['obs'] } 
+    collection.update_one({'_id': ObjectId(id)}, {'$set': updated_product}) 
+    
+    logging.info(f"Produto atualizado com sucesso: {updated_product}")
+
+    return redirect(url_for('produto_details', id=id))       
     
 @app.route("/details/<id>", methods=['GET'])
 def produto_details(id):
     documentos = collection.find_one({'_id': ObjectId(id)})
+    logging.info(f"Detalhes do produto acessado com sucesso: {ObjectId(id)}")
     return render_template("details.html", documentos=documentos)
 
 
 @app.route("/deletar/<id>", methods=["POST"])
 def delete(id):
     collection.delete_one({'_id': ObjectId(id)})
+    logging.info(f"Produto deletado com sucesso: {ObjectId(id)}")
     return redirect(url_for('home'))
 
 

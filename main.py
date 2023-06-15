@@ -13,14 +13,31 @@ collection = db['products']
 
 @app.route("/", methods=['GET'])
 def home():
-    documentos = collection.find().limit(5)
+    documentos = collection.find().limit(4)
     return render_template("home.html", documentos=documentos)
 
 
-@app.route("/produtos", methods=['GET'])
+@app.route("/produtos", methods=['GET', 'POST'])
 def produtos():
-    documentos = collection.find().limit(80)
-    return render_template("produtos.html", documentos=documentos)
+    if request.method == 'POST':
+        opcao_ordenacao = request.form.get('ordenacao')
+
+        filtro = {'Price': {'$ne': ''}}  # Adicione o campo que deseja filtrar
+
+        if opcao_ordenacao == "Ordenar pelo nome":
+            documentos = collection.find(filtro).sort('Name').limit(90)
+        elif opcao_ordenacao == "Ordenar pelo menor preço":
+            documentos = collection.find(filtro).limit(90)
+            documentos = sorted(documentos, key=lambda x: float(x['Price'].replace('$', '')), reverse=False)
+        elif opcao_ordenacao == "Ordenar pelo maior preço":
+            documentos = collection.find(filtro).limit(90)
+            documentos = sorted(documentos, key=lambda x: float(x['Price'].replace('$', '')), reverse=True)
+        else:
+            documentos = collection.find(filtro).limit(90)
+        return render_template("produtos.html", documentos=documentos)
+    else:
+        documentos = collection.find().limit(90)
+        return render_template("produtos.html", documentos=documentos)
 
 
 @app.route("/add", methods=['GET', 'POST'])

@@ -45,39 +45,16 @@
          </div>
          <div class="col-12 col-md-7">
             <div class="d-flex flex-row-reverse justify-content-center justify-content-md-start">
-                <form class="ml-3 d-inline-block">
-                  <select class="form-select form-select-sm">
-                    <option>Ordenar pelo nome</option>
-                    <option>Ordenar pelo menor preço</option>
-                    <option>Ordenar pelo maior preço</option>
-                  </select>
-                </form>
-                <nav class="d-inline-block">
-                    <ul class="pagination pagination-sm my-0">
-                      <li class="page-item">
-                        <button class="page-link">1</button>
-                      </li>
-                      <li class="page-item">
-                        <button class="page-link">2</button>
-                      </li>
-                      <li class="page-item disable">
-                        <button class="page-link">3</button>
-                      </li>
-                      <li class="page-item">
-                        <button class="page-link">4</button>
-                      </li>
-                      <li class="page-item">
-                        <button class="page-link">5</button>
-                      </li>
-                      <li class="page-item">
-                        <button class="page-link">6</button>
-                      </li>
-                      <li class="page-item">
-                        <button class="page-link">7</button>
-                      </li>
-                     
-                    </ul>
-                </nav>
+              <form action="{{ url_for('produtos') }}" method="POST">
+                <select name="ordenacao">
+                  <option value="Ordenar pelo nome">Nome</option>
+                  <option value="Ordenar pelo maior preço">Maior preço</option>
+                  <option value="Ordenar pelo menor preço">Menor preço</option>
+                  <!-- Adicione outras opções de ordenação conforme necessário -->
+                </select>
+                <input type="submit" value="Ordenar">
+              </form>
+              </nav>
             </div>
          </div>
         </div>
@@ -91,7 +68,7 @@
             <!---Showing the current card in the next page-->
             <a href="{{ url_for('produto_details', id = documento._id) }}">
             <div class="card text-center bg-light" style="width: 200px;">
-              <img src="{{ documento.Image }}" class="card-img-top" style="max-height: 160px;">
+              <img src="{{ documento.Image }}" class="card-img-top" style="max-height: 160px;" alt="Sem imagem">
             </a>
               <div class="card-header" style="font-size: 12px;">
                 {{ documento.Price }}

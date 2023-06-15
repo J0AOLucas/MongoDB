@@ -13,7 +13,7 @@ collection = db['products']
 
 @app.route("/", methods=['GET'])
 def home():
-    documentos = collection.find().limit(4)
+    documentos = collection.find().limit(8)
     return render_template("home.html", documentos=documentos)
 
 
@@ -22,7 +22,7 @@ def produtos():
     if request.method == 'POST':
         opcao_ordenacao = request.form.get('ordenacao')
 
-        filtro = {'Price': {'$ne': ''}}  # Adicione o campo que deseja filtrar
+        filtro = {'Price': {'$ne': ''}}  
 
         if opcao_ordenacao == "Ordenar pelo nome":
             documentos = collection.find(filtro).sort('Name').limit(90)

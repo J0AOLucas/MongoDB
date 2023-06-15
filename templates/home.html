@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Monte Carlos Acessórios</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body>
 
@@ -73,25 +74,23 @@
           <table class="table-borderless mb-2 p-3">
             <tr>
               <th>
-
                 <!-- card  -->
                 <div class="row">
                   <div class="col">
-                      {% for documento in documentos %}
-                      <div class="card" style="width: 15rem; display: inline-block;">
-                          <img src="{{ documento.Image }}" class="card-img-top" alt="...">
-                          <div class="card-body">
-                              <p class="card-text" >{{ documento.Name }}</p>
-                              <p class="text-body" style="font-weight: normal">Preço: {{ documento.Price }}</p>
-                              <a href="{{ url_for('produto_details', id = documento._id) }}" class="btn btn-outline-primary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">More details</a>
-                            </div>
+                    <div class="horizontal-scroll-container">
+                    {% for documento in documentos %}
+                    <div class="card custom-card" style="display: inline-block;">
+                      <img src="{{ documento.Image }}" class="card-img-top" alt="...">
+                      <div class="card-body d-flex flex-column"> <!-- Adicione 'd-flex flex-column' para alinhar o conteúdo corretamente -->
+                        <p class="card-text">{{ documento.Name }}</p>
+                        <p class="text-body" style="font-weight: normal">Preço: {{ documento.Price }}</p>
+                        <a href="{{ url_for('produto_details', id = documento._id) }}" class="btn btn-outline-primary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">More details</a>
                       </div>
-                      {% endfor %}
+                    </div>
+                    {% endfor %}
                   </div>
-              </div>  
-
-              </th>
-              <th> 
+                </div>
+                </div>
               </th>
             </tr>
           </table>

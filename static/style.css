@@ -11,3 +11,35 @@
     height: 60px; /* Altura do seu rodapé */
     background-color: #f5f5f5;
 }
+
+.horizontal-scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.card.custom-card {
+    width: 15rem;
+}
+  
+.card.custom-card .card-img-top {
+    height: 10rem;
+    object-fit: cover;
+}
+
+.card.custom-card .card-body {
+    height: 12rem; /* altura fixa para o card-body */
+}
+
+.card.custom-card .card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* Defina como 2 para mostrar até 2 linhas */
+    max-height: calc(1.5em * 2); /* altura máxima para 2 linhas */
+    line-height: 1.5em;
+}
+
+.card.custom-card .text-body {
+    margin-top: auto; /* empurra o restante do conteúdo do card-body para baixo */
+}

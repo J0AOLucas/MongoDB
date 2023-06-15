@@ -32,9 +32,10 @@
     <main>
       <div class="container">
         <h3 class="card-title mt-3 mb-3 p-2"> Lista de todos nossos produtos </h3>
+        <!--
         <div class="row">
           <div class="col-12 col-md-5">
-            <form class="justify-content-center justify-content-md-start mb-3 mb-md-0">
+            <form action="{{ url_for('produtos') }}" method="POST" class="justify-content-center justify-content-md-start mb-3 mb-md-0" >
               <div class="input-group input-group-sm">
                   <input type="text" class="form-control" placeholder="Digite aqui o que procura">
                   <button class="btn btn-danger">
@@ -43,16 +44,17 @@
               </div>
             </form>
          </div>
+         -->
          <div class="col-12 col-md-7">
             <div class="d-flex flex-row-reverse justify-content-center justify-content-md-start">
               <form action="{{ url_for('produtos') }}" method="POST">
                 <select name="ordenacao">
-                  <option value="Ordenar pelo nome">Nome</option>
-                  <option value="Ordenar pelo maior preço">Maior preço</option>
-                  <option value="Ordenar pelo menor preço">Menor preço</option>
+                  <option value="Ordenar pelo nome">Ordenar pelo nome</option>
+                  <option value="Ordenar pelo maior preço">Ordenar pelo maior preço</option>
+                  <option value="Ordenar pelo menor preço">Ordenar pelo menor preço</option>
                   <!-- Adicione outras opções de ordenação conforme necessário -->
                 </select>
-                <input type="submit" value="Ordenar">
+                <input type="submit" value="Ordenar" class="btn btn-secondary btn-sm">
               </form>
               </nav>
             </div>
